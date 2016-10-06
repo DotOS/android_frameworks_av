@@ -18,6 +18,9 @@
 
 cc_library_shared {
     name: "libcameraservice",
+    defaults: [
+        "no_cameraserver_defaults",
+    ],
 
     // Camera service source
 
