@@ -327,6 +327,10 @@ status_t SampleIterator::findSampleTimeAndDuration(
         ++mTimeToSampleIndex;
     }
 
+    if((mTTSDuration*uint64_t(sampleIndex - mTTSSampleIndex)) > UINT32_MAX) {
+        return ERROR_OUT_OF_RANGE;
+    }
+
     *time = mTTSSampleTime + mTTSDuration * (sampleIndex - mTTSSampleIndex);
 
     int32_t offset = mTable->getCompositionTimeOffset(sampleIndex);
